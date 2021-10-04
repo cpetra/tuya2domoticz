@@ -48,23 +48,23 @@ The first run will help to configure the device. You will need to set up the ACC
 In the end, a "config.json" file will be created with the needed information. This file can be updated manually if needed.
 
 ```bash
-costa@tuf:~/work/python/tuya2domoticz$ python3 -m tuya2domoticz
-2021-10-04 11:45:28,485 - tuya2domoticz - INFO - Started, using config file: config.json
+$ python3 -m tuya2domoticz -r
+2021-10-04 20:05:07,591 - tuya2domoticz - INFO - Started, using config file: config.json
 Please configure the following parameters:
-ACCESS_ID: zzzzzzzzzzzzzzzzzzzz
-ACCESS_KEY: yyyyyyyyyyyyyyyyyyyyyyyyyyyyyy
+ACCESS_ID: zzzzzzzzzzzzzzzzzzzzzz
+ACCESS_KEY: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 First device UID: 05075255e098061ba2f6
 Region (us, eu, cn): eu
 domoticz (IP:PORT): 192.168.1.41:8080
-2021-10-04 11:46:12,202 - tuya2domoticz - INFO - Initializing tuya connector.
+2021-10-04 20:05:43,581 - tuya2domoticz - INFO - Initializing tuya connector.
 domoticz ID for "Water leak sensor" (uid: 05075255e098061ba2f6): 38
 domoticz battery ID for "Water leak sensor" (uid: 05075255e098061ba2f6): 40
 domoticz ID for "Water leak sensor 2" (uid: 050752558caab55ab820): 39
 domoticz battery ID for "Water leak sensor 2" (uid: 050752558caab55ab820): 41
-2021-10-04 11:46:23,042 - tuya2domoticz - INFO - {'uid': '05075255e098061ba2f6', 'name': 'Water leak sensor', 'domoticz_id': '38', 'domoticz_id_battery': '40'}
-2021-10-04 11:46:23,042 - tuya2domoticz - INFO - {'uid': '050752558caab55ab820', 'name': 'Water leak sensor 2', 'domoticz_id': '39', 'domoticz_id_battery': '41'}
-2021-10-04 11:46:23,042 - tuya2domoticz - INFO - Devices initialized.
-2021-10-04 11:46:23,042 - tuya2domoticz - INFO - Starting pulsar listener.
+2021-10-04 20:05:50,001 - tuya2domoticz - INFO - {'uid': '05075255e098061ba2f6', 'name': 'Water leak sensor', 'domoticz_id': '38', 'domoticz_id_battery': '40'}
+2021-10-04 20:05:50,001 - tuya2domoticz - INFO - {'uid': '050752558caab55ab820', 'name': 'Water leak sensor 2', 'domoticz_id': '39', 'domoticz_id_battery': '41'}
+2021-10-04 20:05:50,001 - tuya2domoticz - INFO - Devices initialized.
+2021-10-04 20:05:50,001 - tuya2domoticz - INFO - Starting pulsar listener.
 ```
 
 
@@ -80,17 +80,17 @@ Note, this will create a /home/$USER/tuya2domoticz folder (if not existing) and 
 $ systemctl --user status tuya2domoticz
 ● tuya2domoticz.service - Tuya2domoticz Daemon
      Loaded: loaded (/home/costa/.config/systemd/user/tuya2domoticz.service; enabled; vendor preset: enabled)
-     Active: active (running) since Mon 2021-10-04 17:14:04 EEST; 2s ago
+     Active: active (running) since Mon 2021-10-04 20:14:04 EEST; 2s ago
    Main PID: 90404 (python3)
      CGroup: /user.slice/user-1000.slice/user@1000.service/app.slice/tuya2domoticz.service
              └─90404 /usr/bin/python3 -m tuya2domoticz -c /home/costa/tuya2domoticz/config.json
 
-oct 04 17:14:04 tuf systemd[999]: Started Tuya2domoticz Daemon.
-oct 04 17:14:04 tuf python3[90404]: 2021-10-04 17:14:04,826 - tuya2domoticz - INFO - Started, using config file: /home/costa/tuya2domoticz/config.json
-oct 04 17:14:04 tuf python3[90404]: 2021-10-04 17:14:04,826 - tuya2domoticz - INFO - Config loaded.
-oct 04 17:14:04 tuf python3[90404]: 2021-10-04 17:14:04,826 - tuya2domoticz - INFO - Initializing tuya connector.
-oct 04 17:14:05 tuf python3[90404]: 2021-10-04 17:14:05,009 - tuya2domoticz - INFO - {'uid': '05075255e098061ba2f6', 'name': 'Water leak sensor', 'domoticz_id': '38', 'domoticz_id_battery': '40'}
-oct 04 17:14:05 tuf python3[90404]: 2021-10-04 17:14:05,009 - tuya2domoticz - INFO - {'uid': '050752558caab55ab820', 'name': 'Water leak sensor 2', 'domoticz_id': '39', 'domoticz_id_battery': '41'}
-oct 04 17:14:05 tuf python3[90404]: 2021-10-04 17:14:05,009 - tuya2domoticz - INFO - Devices initialized.
-oct 04 17:14:05 tuf python3[90404]: 2021-10-04 17:14:05,010 - tuya2domoticz - INFO - Starting pulsar listener.
+oct 04 20:14:04 tuf systemd[999]: Started Tuya2domoticz Daemon.
+oct 04 20:14:04 tuf python3[90404]: 2021-10-04 20:14:04,826 - tuya2domoticz - INFO - Started, using config file: /home/costa/tuya2domoticz/config.json
+oct 04 20:14:04 tuf python3[90404]: 2021-10-04 20:14:04,826 - tuya2domoticz - INFO - Config loaded.
+oct 04 20:14:04 tuf python3[90404]: 2021-10-04 20:14:04,826 - tuya2domoticz - INFO - Initializing tuya connector.
+oct 04 20:14:05 tuf python3[90404]: 2021-10-04 20:14:05,009 - tuya2domoticz - INFO - {'uid': '05075255e098061ba2f6', 'name': 'Water leak sensor', 'domoticz_id': '38', 'domoticz_id_battery': '40'}
+oct 04 20:14:05 tuf python3[90404]: 2021-10-04 20:14:05,009 - tuya2domoticz - INFO - {'uid': '050752558caab55ab820', 'name': 'Water leak sensor 2', 'domoticz_id': '39', 'domoticz_id_battery': '41'}
+oct 04 20:14:05 tuf python3[90404]: 2021-10-04 20:14:05,009 - tuya2domoticz - INFO - Devices initialized.
+oct 04 20:14:05 tuf python3[90404]: 2021-10-04 20:14:05,010 - tuya2domoticz - INFO - Starting pulsar listener.
 ```

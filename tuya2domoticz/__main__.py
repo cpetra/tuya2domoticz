@@ -202,7 +202,7 @@ def main():
     if (options['daemon']):
         start_daemon(config_file=options['config'])
     else:
-        setup_logging(options['file'])
+        setup_logging(options['logfile'])
         runme(refresh_devices=options['refresh'], config_file=options['config'])
 
 if __name__ == "__main__":

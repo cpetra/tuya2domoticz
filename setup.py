@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="tuya2domoticz",
-    version="0.0.4",
+    version="0.0.5",
     author="Constantin Petra",
     author_email="constantin.petra@gmail.com",
     description="Tuya sensor subscription for Domoticz",
