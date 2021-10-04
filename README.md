@@ -15,6 +15,15 @@ Currently, the only tested device is the Y09 WiFi water leakage sensor.
 
 Home Assistant can also handle tuya devices through a tuya maintained plugin (tuya-home-assistant) but, for what I can tell, it just uses a polling mechanism with a big warning about the delay in use. The Domoticz-TUYA-Plugin apparently uses the same plugin to interface with Tuya.
 
+# Screenshots
+The devices are "virtual devices" of type "alarm". I didn't find a suitable existing device to put everything in one place but this is effective.
+Some pictures related to the current setup below:
+
+![Devices_list](/img/domoticz_devices_list.png)
+![Device_details](/img/domoticz_leakage1.png)
+![Devices_frame](/img/domoticz_devices_frame.png)
+
+
 ## Pre-requisites
 1. Pair the Tuya devices using the default SmartHome Application.
 
