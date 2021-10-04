@@ -7,9 +7,8 @@ This is NOT a Domoticz plugin!
 
 For Domoticz, a tuya plugin is already implemented:
 https://github.com/Xenomes/Domoticz-TUYA-Plugin
-
-But it just handles switches and devices that are usually online, not battery sensors.
-For me, that was not useable, I have reflashed all my Tuya devices with Tasmota (very easily), but for the actual sensors the reflashing is a painful and unguarranteed process. If reflashing is preferred, have a look at this:  
+**but** it just handles switches and devices that are usually online, not battery operated sensors. For me, that was not useable.
+I have reflashed all my non-battery Tuya devices (wall sockets) with Tasmota, but for the actual sensors the reflashing is a painful and unguarranteed process. If reflashing is preferred, have a look at this:
 https://templates.blakadder.com/Y09.html
 
 Currently, the only tested device is the Y09 WiFi water leakage sensor.
@@ -37,6 +36,7 @@ pip3 install tuya2domoticz
 ## Setup
 1. Configure devices
 The first run will help to configure the device. You will need to set up the ACCESS_ID, ACCESS_KEY, one of the registered devices UID (as reported from the tuya IOT project setup), Domoticz IP:PORT and then the device numbers for the Domoticz virtual devices. For each pyhisical device, there should be one a virtual alert device for the actual status, and one for the battery status. If the device battery status is not needed, it shall be set to "-2".
+In the end, a "config.json" file will be created with the needed information. This file can be updated manually if needed.
 
 ```bash
 costa@tuf:~/work/python/tuya2domoticz$ python3 -m tuya2domoticz
@@ -58,12 +58,15 @@ domoticz battery ID for "Water leak sensor 2" (uid: 050752558caab55ab820): 41
 2021-10-04 11:46:23,042 - tuya2domoticz - INFO - Starting pulsar listener.
 ```
 
+
 2. Install the module as service:
 ```bash
 $ python3 -m tuya2domoticz -i
 ```
+Note, this will create a /home/$USER/tuya2domoticz folder (if not existing) and will copy the "config.json" file previously generated. Also, the tuya2domoticz.service file will be copied to /home/$USER/.config/systemd/user/. This systemctl service file can also be modified as needed (in case one needs a different working directory, for example).
 
-3. Start the service:
+# Deploy
+1. Start the service:
 ```bash
 $ systemctl --user status tuya2domoticz
 ● tuya2domoticz.service - Tuya2domoticz Daemon
