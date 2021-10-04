@@ -1,0 +1,11 @@
+[Unit]
+Description=Tuya2domoticz Daemon
+After=network.target
+
+[Service]
+WorkingDirectory=%h/tuya2domoticz
+ExecStart=/usr/bin/python3 -m tuya2domoticz -c %h/tuya2domoticz/config.json
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

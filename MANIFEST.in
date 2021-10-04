@@ -1,0 +1,2 @@
+include tuya2domoticz/conf/tuya2domoticz.initd
+include tuya2domoticz/conf/tuya2domoticz.service
