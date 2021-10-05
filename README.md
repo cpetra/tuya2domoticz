@@ -68,7 +68,7 @@ domoticz battery ID for "Water leak sensor 2" (uid: 050752558caab55ab820): 41
 ```
 
 
-2. Install the module as service:
+2. Install the module as service (Linux only):
 ```bash
 $ python3 -m tuya2domoticz -i
 ```
