@@ -3,13 +3,16 @@ import os
 import sys
 import logging
 import logging.handlers
-import daemon
 import signal
 import time
-from daemon import pidfile
 from optparse import OptionParser
 from .t2d_devman import t2d_devman
 from .t2dconnector import t2dconnector
+try:
+    import daemon
+    from daemon import pidfile
+except ImportError:
+    daemon = None
 
 # Main class
 # 
@@ -54,11 +57,14 @@ class tuya2domoticz:
         ("Config file written.")
 
     def do_input(self, str, empty=False):
-        BOLD = '\033[1m'
-        END = '\033[0m'
-        BLUE = '\033[94m'
-
-        val = input(BOLD + BLUE + str + END)
+        plat = sys.platform
+        if plat == 'win32':
+            val = input(str)
+        else:
+            BOLD = '\033[1m'
+            END = '\033[0m'
+            BLUE = '\033[94m'
+            val = input(BOLD + BLUE + str + END)
         if empty == False and val == "" :
             print("Cannot have empty configuration values")
             exit(1)
@@ -133,7 +139,6 @@ def runme(refresh_devices, config_file, is_daemon=False):
     t2d = tuya2domoticz(refresh_devices=refresh_devices, config_file=config_file)
     devm = t2d_devman(t2d.config)
     signal.signal(signal.SIGTERM, on_signal)
-    signal.signal(signal.SIGQUIT, on_signal)
 
     t2d.run(devm)
 
@@ -199,7 +204,7 @@ def main():
         # install_initd_service()
         install_systemd_service()
         exit(0)
-    if (options['daemon']):
+    if (options['daemon'] and daemon != None):
         start_daemon(config_file=options['config'])
     else:
         setup_logging(options['logfile'])
