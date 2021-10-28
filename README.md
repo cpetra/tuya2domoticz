@@ -77,6 +77,7 @@ Note, this will create a /home/$USER/tuya2domoticz folder (if not existing) and 
 # Deploy
 1. Start the service:
 ```bash
+$ systemctl --user start tuya2domoticz
 $ systemctl --user status tuya2domoticz
 ● tuya2domoticz.service - Tuya2domoticz Daemon
      Loaded: loaded (/home/costa/.config/systemd/user/tuya2domoticz.service; enabled; vendor preset: enabled)
